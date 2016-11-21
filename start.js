@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         request({url:url, qs:propertiesObject}, function(error, response, html){
 
             if(!error){
-                var html = cheerio.load(html);
+                var html = cheerio.load(response);
 
                 /*fs.writeFile('output.json', html, function(err){
 
@@ -43,10 +43,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
                 var data = {
                     response_type: 'in_channel', // public to the channel
-                    text: response,
-                    attachments:[ {
-                        image_url: 'https://assets.api.ai/openapi-prod/300/assets/img/logo-black.png'
-                    } ]};
+                    text: html
+                };
 
                 res.json(data);
             }
