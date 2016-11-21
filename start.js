@@ -1,10 +1,10 @@
 'use strict';
-const express = require('express');
-const fs = require('fs');
-const bodyParser = require('body-parser');
-const cheerio = require('cheerio');
-const request = require('request');
-const app = express();
+var express = require('express');
+var fs = require('fs');
+var bodyParser = require('body-parser');
+var cheerio = require('cheerio');
+var request = require('request');
+var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
         app.post('/', (req, res) => {
                 if(typeof req.body!=='undefined')
-                    let text = req.body.text;
+                    var text = req.body.text;
                 else
-                    let text = '';
+                    var text = '';
 
                 var url = 'http://jobs.bdjobs.com/jobsearch.asp';
                 var propertiesObject = { txtsearch:text, qOT:'0', hidJobSearch:'jobsearch' };
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
                         });*/
 
-                        let data = {
+                        var data = {
                             response_type: 'in_channel', // public to the channel
                             text: html,
                             attachments:[ {
