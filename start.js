@@ -8,7 +8,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-    var server = app.listen(3000, function() {
+    var server = app.listen(process.env.PORT || 3000, function() {
         console.log('Express server   listening on port %d in %s mode', server.address().port,   app.settings.env);
     });
 
@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
         var url = 'http://jobs.bdjobs.com/jobsearch.asp';
         var propertiesObject = { txtsearch:text, qOT:'0', hidJobSearch:'jobsearch' };
-        console.log('here');
+
         request({url:url, qs:propertiesObject}, function(error, response, html){
 
             if(!error){
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
                 var data = {
                     response_type: 'in_channel', // public to the channel
-                    text: html,
+                    text: response,
                     attachments:[ {
                         image_url: 'https://assets.api.ai/openapi-prod/300/assets/img/logo-black.png'
                     } ]};
