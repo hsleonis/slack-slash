@@ -35,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         request({url:url, qs:propertiesObject}, function(error, response, html){
 
             if(!error){
-                var html = cheerio.load(response);
+                var $ = cheerio.load(html);
 
                 /*fs.writeFile('output.json', html, function(err){
 
@@ -43,7 +43,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
                 var data = {
                     response_type: 'in_channel', // public to the channel
-                    text: html
+                    text: response.body
                 };
 
                 res.json(data);
