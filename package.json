@@ -1,0 +1,27 @@
+{
+  "name": "bot",
+  "version": "1.0.1",
+  "description": "Slack bot to search jobs",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.0",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u001b[A\u001b[Bhttps://git.heroku.com/slackbot-jobs.git"
+  },
+  "keywords": [
+    "Slack",
+    "Bot",
+    "Shahriar"
+  ],
+  "author": "Md. Hasan Shahriar",
+  "license": "ISC"
+}
