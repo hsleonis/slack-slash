@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
                     if(!error){
                         var html = cheerio.load(html);
 
-                        fs.writeFile('output.json', html, function(err){
+                        /*fs.writeFile('output.json', html, function(err){
 
-                        });
+                        });*/
 
                         let data = {
                             response_type: 'in_channel', // public to the channel

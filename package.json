@@ -2,7 +2,7 @@
   "name": "bot",
   "version": "1.0.1",
   "description": "Slack bot to search jobs",
-  "main": "index.js",
+  "main": "start.js",
   "dependencies": {
     "body-parser": "^1.15.2",
     "cheerio": "^0.22.0",
