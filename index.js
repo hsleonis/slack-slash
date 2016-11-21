@@ -14,7 +14,10 @@ const server = app.listen(3000,
         });
 
         app.post('/', (req, res) => {
-                let text = req.body.text;
+                if(typeof req.body!=='undefined')
+                    let text = req.body.text;
+                else
+                    let text = '';
 
                 var url = 'http://jobs.bdjobs.com/jobsearch.asp';
                 var propertiesObject = { txtsearch:text, qOT:'0', hidJobSearch:'jobsearch' };
