@@ -8,37 +8,36 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*const server = app.listen(3000,
-        () => {
-            console.log('Express server   listening on port %d in %s mode', server.address().port,   app.settings.env);
-        });*/
+    var server = app.listen(3000, function() {
+        console.log('Express server   listening on port %d in %s mode', server.address().port,   app.settings.env);
+    });
 
-        app.post('/', (req, res) => {
-                if(typeof req.body!=='undefined')
-                    var text = req.body.text;
-                else
-                    var text = '';
+    app.post('/', function(req, res){
+        if(typeof req.body!=='undefined')
+            var text = req.body.text;
+        else
+            var text = '';
 
-                var url = 'http://jobs.bdjobs.com/jobsearch.asp';
-                var propertiesObject = { txtsearch:text, qOT:'0', hidJobSearch:'jobsearch' };
+        var url = 'http://jobs.bdjobs.com/jobsearch.asp';
+        var propertiesObject = { txtsearch:text, qOT:'0', hidJobSearch:'jobsearch' };
 
-                request({url:url, qs:propertiesObject}, function(error, response, html){
+        request({url:url, qs:propertiesObject}, function(error, response, html){
 
-                    if(!error){
-                        var html = cheerio.load(html);
+            if(!error){
+                var html = cheerio.load(html);
 
-                        /*fs.writeFile('output.json', html, function(err){
+                /*fs.writeFile('output.json', html, function(err){
 
-                        });*/
+                });*/
 
-                        var data = {
-                            response_type: 'in_channel', // public to the channel
-                            text: html,
-                            attachments:[ {
-                                image_url: 'https://assets.api.ai/openapi-prod/300/assets/img/logo-black.png'
-                            } ]};
+                var data = {
+                    response_type: 'in_channel', // public to the channel
+                    text: html,
+                    attachments:[ {
+                        image_url: 'https://assets.api.ai/openapi-prod/300/assets/img/logo-black.png'
+                    } ]};
 
-                        res.json(data);
-                    }
-                });
+                res.json(data);
+            }
         });
+    });
